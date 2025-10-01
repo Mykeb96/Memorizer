@@ -1,21 +1,25 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styles from '../styles/components/Card.module.scss'
 
+import type { Card } from '../App'
+
 interface CardProps {
-    num: number;
+    color: string;
+    handleGameState: (card: Card) => void;
+    id: number;
 }
 
-export default function Card({ num }: CardProps) {
-    const [enabled, setEnabled] = useState<boolean>(false);
+export default function Card({ color, handleGameState, id }: CardProps) {
+    const [isClicked, setIsClicked] = useState<boolean>(false);
 
-    const handleState = () => {
-        setEnabled(!enabled);
+    const handleSelectCard = () => {
+        setIsClicked(true);
+        handleGameState({color: color, id: id})
     }
 
     return (
-        <div className={styles.container}>
-            <h5>Card {num}</h5>
-            <button onClick={handleState}>enabled: {enabled.toString()}</button>
+        <div className={styles.container} style={{backgroundColor: isClicked ? color : 'none'}}>
+            <button onClick={handleSelectCard}>Click</button>
         </div>
     )
 }
