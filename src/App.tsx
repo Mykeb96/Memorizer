@@ -20,10 +20,10 @@ const colors: string[] = [
   'Blue',
   'Green',
   'Yellow',
-  'Orange',
-  'Purple',
-  'Pink',
-  'Black'
+  // 'Orange',
+  // 'Purple',
+  // 'Pink',
+  // 'Black'
 ]
 
 const initialGameState: gameState = {
@@ -112,6 +112,7 @@ function App() {
           partnerId={card.partnerId}
           color={card.color} 
           handleGameState={handleGameState}
+          selectedCards={selectedCards}
         />
         )}
       </div>
