@@ -72,7 +72,7 @@ function App() {
   };
   const [cards, setCards] = useState<CardType[]>(createDeck());
   const [selectedCards, setSelectedCards] = useState<gameState>(initialGameState);
-  const [gameOver, setGameOver] = useState<boolean>(true);
+  const [gameOver, setGameOver] = useState<boolean>(false);
 
   let twoCardsSelected: boolean = selectedCards.card_one.id !== '' && selectedCards.card_two.id !== '';
   let cardsMatch: boolean = (selectedCards.card_one.partnerId == selectedCards.card_two.id) && twoCardsSelected;

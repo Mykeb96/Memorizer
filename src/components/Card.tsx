@@ -22,7 +22,6 @@ const Card = React.memo(({ color, id, partnerId, handleGameState, isActive, isMa
         visibility: isMatched ? 'hidden' : 'initial'
         }}
         >
-            <span>{color}</span>
             <button onClick={() => handleGameState({color: color, id: id, partnerId: partnerId, isActive: isActive, isMatched: isMatched})}>Click</button>
         </div>
     )
