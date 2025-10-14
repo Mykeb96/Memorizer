@@ -72,7 +72,7 @@ function App() {
   };
   const [cards, setCards] = useState<CardType[]>(createDeck());
   const [selectedCards, setSelectedCards] = useState<gameState>(initialGameState);
-  const [gameOver, setGameOver] = useState<boolean>(false);
+  const [gameOver, setGameOver] = useState<boolean>(true);
 
   let twoCardsSelected: boolean = selectedCards.card_one.id !== '' && selectedCards.card_two.id !== '';
   let cardsMatch: boolean = (selectedCards.card_one.partnerId == selectedCards.card_two.id) && twoCardsSelected;
@@ -124,6 +124,11 @@ function App() {
     setCardActive(card.id)
   };
 
+  const playAgain = () => {
+    setCards(createDeck());
+    setGameOver(false);
+  }
+
   useEffect(() => {
     if (twoCardsSelected) {
       if (cardsMatch) {
@@ -151,23 +156,27 @@ function App() {
 
   return (
     <div id="App">
-      <div className={styles.Cards_Container}>
         {!gameOver ? (
-          cards.map((card: CardType) => 
-            <Card
-              key={card.id} 
-              id={card.id}
-              partnerId={card.partnerId}
-              color={card.color} 
-              handleGameState={handleGameState}
-              isActive={card.isActive}
-              isMatched={card.isMatched}
-            />
-          )
-        ) :
-          <span>You Won!</span>
+          <div className={styles.Cards_Container}>
+            {cards.map((card: CardType) => 
+              <Card
+                key={card.id} 
+                id={card.id}
+                partnerId={card.partnerId}
+                color={card.color} 
+                handleGameState={handleGameState}
+                isActive={card.isActive}
+                isMatched={card.isMatched}
+              />
+            )}
+          </div>
+        ) 
+        :
+          <div className={styles.victory_screen}>
+            <span className={styles.victory_text}>You Won!</span>
+              <button onClick={playAgain} className={styles.play_again}>Play Again</button>
+          </div>
         }
-      </div>
     </div>
   )
 }

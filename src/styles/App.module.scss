@@ -1,10 +1,14 @@
 #root,
 body,
-html {
+html,
+#App {
   margin: 0;
   padding: 0;
   height: 100dvh;
   width: 100dvw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .Cards_Container {
@@ -19,4 +23,25 @@ html {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(8, 1fr);
   }
+}
+
+.victory_screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  width: 400px;
+}
+
+.victory_text {
+  font-size: 5rem;
+  font-weight: bold;
+  font-family: fantasy;
+}
+
+.play_again {
+  height: 50px;
+  width: 150px;
+  font-size: 1rem;
 }
