@@ -12,4 +12,11 @@ html {
   gap: 10px;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
+  max-width: fit-content;
+  margin: 0 auto;
+  
+  @media (max-width: 532px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+  }
 }
